@@ -1,0 +1,4 @@
+[submodule "rse-plugins"]
+	path = rse-plugins
+	url = https://github.com/uw-ssec/rse-plugins.git
+	branch = refactor/ai-research-workflows-skills
