@@ -6,22 +6,47 @@ FROM mcr.microsoft.com/devcontainers/base:dev-ubuntu26.04
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # curl, git, jq, tar, and ca-certificates are provided by the
-# mcr.microsoft.com/devcontainers/base image, so no apt install step is needed.
+# mcr.microsoft.com/devcontainers/base image. Homebrew on Linux additionally
+# requires a C toolchain (build-essential), procps, and file, so install those
+# here. This runs as root, before the switch to the vscode user below.
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
+        procps \
+        file \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install uv from the official, version-pinned uv image. The astral-sh/uv image
 # ships statically-linked `uv`/`uvx` binaries, so copying them in is both
 # reproducible (pinned tag) and avoids a curl|sh bootstrap.
 COPY --from=ghcr.io/astral-sh/uv:0.6.14 /uv /uvx /usr/local/bin/
 
+# /home/linuxbrew/.linuxbrew/{bin,sbin} is the default Homebrew-on-Linux prefix.
+# Putting it on PATH at the image level makes `brew` (and brew-installed tools
+# such as `node`) available to non-interactive lifecycle scripts and the later
+# build-time RUN steps, independent of the interactive `brew shellenv` hook.
 ENV VSCODE_HOME=/home/vscode \
     VSCODE_USER=vscode \
     SHELL=/bin/bash \
-    PATH=/home/vscode/.local/bin:${PATH}
+    PATH=/home/vscode/.local/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin:${PATH}
 
 USER ${VSCODE_USER}
 WORKDIR /workspaces/viss-agentic-ai-workshop-iss-2026
 
 RUN echo 'eval "$(uv generate-shell-completion bash)"' >> ${VSCODE_HOME}/.bashrc
+
+# Install Homebrew (Linuxbrew) and use it to provide Node.js. Homebrew refuses to
+# run as root, so this runs as the vscode user (which has passwordless sudo).
+# NONINTERACTIVE=1 skips the install script's confirmation prompt during the
+# image build, and the brew shellenv hook makes brew available in interactive
+# shells (the build-time PATH is already set in the ENV block above).
+RUN NONINTERACTIVE=1 /bin/bash -c \
+      "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
+    && echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> ${VSCODE_HOME}/.bashrc
+
+# Install Node.js via Homebrew. brew is on PATH (see the ENV block), so this
+# resolves the prebuilt `node` bottle rather than building from source.
+RUN brew install node@24
 
 # Pre-install the GitHub Copilot CLI during the image build so the devcontainer
 # is ready on attach. No agent plugins are installed: the research-loop workflow
