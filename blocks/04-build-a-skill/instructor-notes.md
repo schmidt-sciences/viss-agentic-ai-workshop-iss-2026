@@ -61,7 +61,7 @@ If you're behind: cut show-and-tell first (it's optional). Then collapse the liv
 - Open `scientific-python-reviewer.agent.md` in a side editor. Point at structure.
 - Open `docstring-writer.agent.md`. Same shape, different tool list.
 - *"The exercise tells you to copy patterns. Do that, the worked examples ARE the curriculum."*
-- If anyone asks "is there more?": yes, `.github/` has a fuller gallery (more agents, prompt-file commands, a skill, instructions) mapped to the research lifecycle. Point them at `.github/README.md`, but don't detour the whole room.
+- If anyone asks "is there more?": yes, `.github/` has a fuller gallery (more agents, prompt-file commands, a skill, instructions) mapped to the research lifecycle. Point them at the customization gallery in the root `README.md`, but don't detour the whole room.
 
 ### 5. Your turn (HOLD this slide for the whole hands-on)
 
@@ -73,7 +73,7 @@ If you're behind: cut show-and-tell first (it's optional). Then collapse the liv
 ### 6. Wrap-up
 
 - Confirm office hours time + location explicitly.
-- Thank: co-instructors, Schmidt Sciences, UW SSEC, and the attendees.
+- Thank: co-instructors, Schmidt Sciences, the VISS centers, and the attendees.
 - Keep the close short; don't gild it.
 
 ## Live-build script

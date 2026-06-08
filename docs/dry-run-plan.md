@@ -66,7 +66,7 @@ If any block feels like it's a side-trip, that's the time to flag and adjust.
 - [ ] Every block's `README.md` has the same sections in the same order.
 - [ ] Every block's `slides.md` has the same Marp frontmatter shape.
 - [ ] [`.github/copilot-instructions.md`](../.github/copilot-instructions.md) reflects the current state (agents / prompts / skills / instructions gallery mentioned).
-- [ ] [`.github/README.md`](../.github/README.md) gallery index lists every customization and maps it to a research-lifecycle phase.
+- [ ] The [customization gallery in the root README](../README.md#copilot-customization-gallery) lists every customization and maps it to a research-lifecycle phase.
 - [ ] Root [`README.md`](../README.md) block index is up to date.
 
 **Lint sanity:**
@@ -243,7 +243,7 @@ This is the block where you really need a working environment.
 - [ ] [`exercise/README.md`](../blocks/04-build-a-skill/exercise/README.md) - read it as if you were a participant who's never seen Copilot custom agents. Does each step land? Where would you get stuck?
 - [ ] [`exercise/ideas.md`](../blocks/04-build-a-skill/exercise/ideas.md) - are the 20+ ideas still relevant? Add any that come to mind.
 - [ ] [`exercise/my-agent.agent.md.template`](../blocks/04-build-a-skill/exercise/my-agent.agent.md.template) - TODO placeholders clear?
-- [ ] [`.github/README.md`](../.github/README.md) - skim the gallery index. Every listed agent / command / skill / instruction file exists and the lifecycle mapping reads sensibly.
+- [ ] The [customization gallery in the root README](../README.md#copilot-customization-gallery) - skim the gallery index. Every listed agent / command / skill / instruction file exists and the lifecycle mapping reads sensibly.
 
 #### Run
 

@@ -102,7 +102,7 @@ The model learns the **shape**: read the spec, write typed code, handle the edge
 Two steps:
 
 1. **Reward model:** collect pairs of model responses with a human label of "A is better than B". Train a small model to predict that preference.
-2. **RL:** use that reward model to push the policy (the LLM) toward higher-scoring outputs. PPO is the classic algorithm; **DPO** is the simpler modern alternative that skips the explicit reward model.
+2. **RL:** use that reward model to push the policy (the LLM) toward higher-scoring outputs. **PPO** (Proximal Policy Optimization) is the classic algorithm; **DPO** (Direct Preference Optimization) is the simpler modern alternative that skips the explicit reward model.
 
 Outcome: the model learns **what humans find helpful**, when to refuse, and, crucially for agents, **when it has done enough and can stop**.
 
@@ -271,7 +271,7 @@ When debugging an agent, ask:
 > _"Is this a **training problem** (model X just can't do this), or a
 > **prompt problem** (it could if I told it better)?"_
 
-**Most issues are prompt problems.** That's the whole reason Block 4 exists.
+**The prompt side is the lever you actually control** — and it's what Blocks 3 and 4 build on.
 
 ---
 
@@ -293,8 +293,7 @@ one `read` of a big file or a noisy traceback can cost thousands of tokens.
 
 > When the window fills, the earliest content (your original instructions)
 > gets pushed out. The model doesn't error — it just **silently forgets**.
-> That's not a bug; it's the architecture. It's the root of Block 3's
-> first failure mode.
+> That's not a bug; it's the architecture. 
 
 ---
 
@@ -329,4 +328,4 @@ That same training history also tells you **how it can fail**:
 - Reward-hacked on "be confident" -> won't admit it doesn't know
 - Trained on short trajectories -> loops on long ones
 
-**Block 3 turns these into a taxonomy with mitigations.**
+**Enough concepts, all applied now.**

@@ -41,7 +41,7 @@ your lab into a scratch folder and target that. The point is the
 
 ## 3. Pick a job (1 min)
 
-What does your agent do? See [`ideas.md`](ideas.md) for ~30 starting ideas
+What does your agent do? See [`ideas.md`](ideas.md) for 30+ starting ideas
 across categories: code review, code generation, refactoring, climate-
 specific, general research, behavioral / social science / stats,
 experiment management, onboarding.

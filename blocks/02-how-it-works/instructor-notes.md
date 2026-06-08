@@ -115,7 +115,7 @@ If you are behind, cut from slides 4-6 (each one's "trade-off note" is the most 
 
 - This is the most actionable slide of the whole block. Call it out: **"Bookmark this slide. This is the lens you'll use every time an agent surprises you."**
 - Concrete example to drop: *"if Claude won't follow your style guide, it's not because Claude lacks taste, it's because you didn't put the style guide in `AGENTS.md`."*
-- Almost every agent failure people complain about online turns out to be a prompt problem on inspection.
+- When an agent surprises you, the prompt side is the first place to look, because it's the part you control.
 
 ### 8a. The context window (the prompt is a finite budget)
 
@@ -177,7 +177,7 @@ If you are behind, cut from slides 4-6 (each one's "trade-off note" is the most 
 |---|---|
 | "Is RLHF the same as Constitutional AI?" | "Constitutional AI is a *variant* of RLHF where the preferences come from a model graded against a written constitution, not from human raters. Same shape, less human labor." |
 | "What's the difference between RLHF and DPO?" | "DPO skips the explicit reward model, it directly optimizes the policy from preference pairs. Often equally effective, much simpler to implement." |
-| "Should I fine-tune for my codebase?" | "Almost never. Try prompt and tool-schema iteration first, that's Block 4. Fine-tuning is the last 5% of behavior shaping; the first 95% is in the prompt." |
+| "Should I fine-tune for my codebase?" | "Almost never to start. Try prompt and tool-schema iteration first, that's Block 4. Fine-tuning is a heavier, later step for behavior the prompt genuinely can't reach." |
 | "What's agentic RL exactly?" | "Reinforcement learning where the trajectory is multi-turn tool use, and the reward is task completion (e.g., 'did the tests pass?'). It's how recent agent products got reliably good at long workflows." |
 | "Will GPT-5 / Claude / Gemini eventually all be the same?" | "The shape of behavior is converging fast. The remaining differences are speed, cost, and the small number of capabilities each lab over-invests in. Expect the model layer to feel like a commodity within a couple of years." |
 

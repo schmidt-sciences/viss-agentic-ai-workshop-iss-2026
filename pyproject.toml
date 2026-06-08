@@ -10,7 +10,6 @@ authors = [
 ]
 dependencies = [
     "ipykernel>=6.29.0",
-    "jupyterlab>=4.2.0",
     "litellm>=1.50.0",
     "matplotlib>=3.9.0",
     "numpy>=2.0.0",

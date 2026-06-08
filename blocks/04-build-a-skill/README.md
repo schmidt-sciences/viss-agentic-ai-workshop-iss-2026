@@ -36,7 +36,7 @@ By the end of this block, an attendee can:
   exercise/
     README.md                       # participant-facing step-by-step
     my-agent.agent.md.template      # SKELETON to copy + fill in
-    ideas.md                        # ~20 starter agent ideas
+    ideas.md                        # 30+ starter agent ideas
 ```
 
 The **worked examples** live in [`.github/agents/`](../../.github/agents/) so
@@ -48,7 +48,7 @@ The two used as the Block 4 reference are:
 
 The rest of [`.github/`](../../.github/) is a fuller gallery (more agents,
 prompt-file commands, a skill, path-scoped instructions) mapped to the research
-lifecycle — see [`.github/README.md`](../../.github/README.md). Point curious
+lifecycle — see the [customization gallery in the root README](../../README.md#copilot-customization-gallery). Point curious
 attendees at it.
 
 ## Timing (~30 min)

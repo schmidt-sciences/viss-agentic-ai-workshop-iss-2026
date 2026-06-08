@@ -18,7 +18,7 @@ description: "Coding with AI Agents - 2026 Interdisciplinary Science Summit"
 
 ## Where we left off
 
-Block 2: most agent failures are **prompt problems**, not training problems.
+Block 2: when an agent fails, ask whether it's a **prompt problem** or a **training problem** — and the prompt is the part you control.
 
 So how do you systematically write good prompts for hard, multi-step research tasks?
 
@@ -28,8 +28,6 @@ So how do you systematically write good prompts for hard, multi-step research ta
 > to your code and produces an auditable artifact. Sound familiar?
 > It's exactly the same trick as `AGENTS.md` from Block 1, applied
 > *per phase of your work*, not just per project.
-
-**Workflows ARE the prompt.**
 
 ---
 
@@ -86,7 +84,6 @@ Each failure traces back to a specific post-training shortcut from Block 2.
 | Tool misuse | Edits when it should ask | RLHF made it action-biased | "Ask before edit" in system prompt |
 | Scope creep | Refactors files you didn't mention | SFT taught "be helpful" too eagerly | Tight `/plan`, narrow per-phase scope |
 
-> Most production agent disasters are 2 or 3 of these stacked.
 
 ---
 
@@ -127,7 +124,7 @@ Together they're how you stay in control of an agent that edits files.
 
 > This is the discipline that makes the rest safe. An agent you can't review
 > is an agent you can't trust, and a clean git history is what makes review
-> a 30-second glance instead of an archaeology project.
+> a 30-second glance.
 
 ---
 

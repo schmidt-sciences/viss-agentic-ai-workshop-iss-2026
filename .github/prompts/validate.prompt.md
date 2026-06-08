@@ -1,7 +1,7 @@
 ---
 agent: agent
 description: 'Systematically verify an implementation against its plan and report pass/fail with evidence.'
-tools: ['read', 'search/codebase', 'search', 'execute/runInTerminal']
+tools: ['read', 'search/codebase', 'search', 'execute/runInTerminal', 'edit/editFiles']
 ---
 
 # Validate (phase 4 of the research loop)
@@ -24,11 +24,18 @@ If blank, search `.agents/` for `plan-*.md` / `implement-*.md` and ask which to 
 4. **Read the code against the spec.** Don't trust checkmarks — confirm the
    claimed changes are actually present and match the plan.
 5. **List the Manual Verification items** the human still needs to test.
+6. **Write the artifact** to `.agents/validate-<slug>.md` (derive `<slug>` from
+   the plan filename, e.g. `plan-vscm-package.md` → `validate-vscm-package.md`).
+   Use the structure below.
+7. **Present** a short summary in chat (overall status + any failures) and link
+   to the written artifact.
 
-## Report (present in chat)
+## Artifact structure (`.agents/validate-<slug>.md`)
 
 ```
 # Validation: <goal>
+
+Plan: [plan-<slug>.md](plan-<slug>.md)
 
 ## Overall: ✅ Ready | ⚠️ Issues found | ❌ Incomplete
 
@@ -55,5 +62,6 @@ If blank, search `.agents/` for `plan-*.md` / `implement-*.md` and ask which to 
 - **Actually run the checks.** Validation is systematic, not a vibe check.
 - Be objective: report what is, not what you hoped. Document failures even when
   inconvenient.
-- **Read-only.** Do not fix issues here — report them. If the user wants fixes,
+- **Read-only on source.** The _only_ file you create is the validation artifact
+  in `.agents/`. Do not fix issues here — report them. If the user wants fixes,
   that's a new `/implement` (or a plan update). Re-run `/validate` after fixes.

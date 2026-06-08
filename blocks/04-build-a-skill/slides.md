@@ -21,7 +21,7 @@ description: "Coding with AI Agents - 2026 Interdisciplinary Science Summit"
 | Block | Takeaway |
 |---|---|
 | 1. Landscape | All coding agents have the same anatomy: LLM + tools + memory + loop. |
-| 2. How it works | Most agent failures are **prompt problems**, not training problems. |
+| 2. How it works | Triage failures: **prompt problem** vs **training problem** — the prompt is your lever. |
 | 3. Workflows | **Workflows ARE the prompt**, structured, reusable, auditable. |
 | 4. **Now** | Write one. |
 
@@ -70,7 +70,7 @@ You are a senior research software engineer reviewing scientific Python code...
 
 Open them. Read them. **They are the reference for what you'll write.**
 
-> The exercise's `ideas.md` has ~20 more agent ideas if you don't have one
+> The exercise's `ideas.md` has 30+ more agent ideas if you don't have one
 > in mind, by category (review, generation, refactoring, climate-specific,
 > general research, onboarding). The rest of `.github/` is a fuller gallery.
 
@@ -105,9 +105,6 @@ You now have:
 - A concrete workflow you've seen run on real code (Block 3)
 - A custom agent you wrote yourself that **lives in your Codespace** (Block 4)
 
-This Codespace stays. The repo stays. **Office hours tomorrow**, bring
-the code or data you actually want to use this on.
+This Codespace stays. The repo stays. 
 
-> **Pieces are simple. Practice makes it useful. Go practice.**
->
 > Thank you for spending the afternoon with us.

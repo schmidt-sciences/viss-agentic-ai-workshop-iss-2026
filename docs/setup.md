@@ -52,7 +52,7 @@ symlinked folders to browse. Open [`.github/`](../.github/) in the Explorer:
 - [`.github/skills/`](../.github/skills/) — skills that bundle a helper script.
 - [`.github/instructions/`](../.github/instructions/) — path-scoped conventions.
 
-See [`.github/README.md`](../.github/README.md) for the full gallery.
+See the [customization gallery in the root README](../README.md#copilot-customization-gallery) for the full gallery.
 
 ## Gateway credentials
 

@@ -23,7 +23,7 @@ field, we want resources that build the **mental model** Block 2 set up.
 
 ## Companion to slide 8 ("trained in vs in the prompt")
 
-- **Simon Willison, [Anything you ask me about LLMs is probably a prompt problem](https://simonwillison.net/)** (his blog at large; pick any recent post). Simon documents in detail how often "the model can't do X" turns out to be "I phrased it badly." Reinforces the actionable takeaway from Block 2.
+- **Simon Willison, [his blog at large](https://simonwillison.net/)** (pick any recent post). Simon documents case after case where "the model can't do X" turned out to be "I phrased it badly." A good feel for how often the prompt side, the part you control, is worth checking first.
 - **Anthropic, [Claude's character / training methodology](https://www.anthropic.com/news/claude-character)**. Useful for understanding what "training in" personality and helpfulness actually looks like.
 
 ---

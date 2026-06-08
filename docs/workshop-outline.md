@@ -47,7 +47,7 @@ Join us the following day to continue the work from Block 4. VISS members will b
     - **Note:** Must provide GitHub handle ahead of time for the above.
   - A laptop with a modern browser and terminal access
     - **Preferred:** Chromium-based browser
-- What Schmidt Sciences and UW SSEC will provide:
+- What Schmidt Sciences and the VISS centers will provide:
   - GitHub Codespaces allocation for organization-level access for participants
   - AWS Bedrock instance of Claude for use by participants during the workshop and next day's office hours
 

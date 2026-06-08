@@ -1,6 +1,6 @@
 # Workshop Repository: GitHub Copilot Instructions
 
-This repository is the participant- and instructor-facing material for the workshop **"Coding with AI Agents: A Hands-On Workshop for Scientists"** (2026 Interdisciplinary Science Summit, Schmidt Sciences x UW SSEC).
+This repository is the participant- and instructor-facing material for the workshop **"Coding with AI Agents: A Hands-On Workshop for Scientists"** (2026 Interdisciplinary Science Summit, Schmidt Sciences x VISS centers).
 
 You are assisting an instructor or workshop participant. Optimize for **clarity, reproducibility, and teaching value** over cleverness.
 
@@ -30,7 +30,7 @@ You are assisting an instructor or workshop participant. Optimize for **clarity,
 
 ## Workshop customizations (`.github/`)
 
-This repo ships a gallery of Copilot customizations under `.github/`, indexed in [`.github/README.md`](README.md):
+This repo ships a gallery of Copilot customizations under `.github/`, indexed in the [customization gallery in the root README](../README.md#copilot-customization-gallery):
 
 - **Custom agents** in [`.github/agents/`](agents/) (the renamed "chat modes", now `*.agent.md`): `scientific-python-reviewer` and `docstring-writer` are the two Block 4 worked examples; `reproducibility-auditor` and `research-pair` extend the pattern.
 - **Commands (prompt files)** in [`.github/prompts/`](prompts/): `scaffold-package`, `eda-summary`, `write-tests`, `citation-and-release`, plus the **Block 3 research-loop workflow** (`research`, `plan`, `iterate-plan`, `experiment`, `implement`, `validate`, `handoff`) — adapted in-repo from UW SSEC's `rse-plugins`.
