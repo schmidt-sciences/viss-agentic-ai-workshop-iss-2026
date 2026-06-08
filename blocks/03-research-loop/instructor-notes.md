@@ -47,7 +47,7 @@ If `/implement` is faster than expected, jump to slide 6 (mitigations) early. If
 
 - Read the table. **Don't memorize**: the *patterns* at the bottom matter more than the individual commands.
 - *"You don't use all seven every time. You pick the pattern that matches your work."* (We demo four.)
-- Acknowledge: each command is just a `.github/prompts/*.prompt.md` file in this repo — all seven ship in-repo, nothing to install. The phase design and artifact templates are adapted from UW SSEC's `rse-plugins`; the point is the *pattern* is portable, and in Block 4 attendees build their own.
+- Acknowledge: each command is a small `.github/prompts/*.prompt.md` file in this repo that hands off to a reusable **skill** from UW SSEC's `rse-plugins` (`ai-research-workflows`). The prompt files ship in-repo and the devcontainer installs the skills into Copilot — nothing for attendees to install. The point is the *pattern* is portable, and in Block 4 attendees build their own.
 
 ### 4. Demo intro
 
@@ -164,7 +164,7 @@ Copy these to your scratch buffer before starting. **Run them one at a time, in 
 | Symptom | Recovery |
 |---|---|
 | Copilot Chat won't respond / model not selected | Check the model picker shows a workshop model; confirm `LITELLM_*` secrets are set. Meanwhile switch to slides 5-7 and walk through the `expected-artifacts/` folder as if it were live output. Promise to debug after the block. |
-| The `/research` etc. commands don't appear in the `/` picker | Run **Developer: Reload Window** (the prompt files in `.github/prompts/` are picked up on reload). ~10 sec. If still missing, the demo can be run by pasting the prompt body manually. |
+| The `/research` etc. commands don't appear in the `/` picker | Run **Developer: Reload Window** (the prompt files in `.github/prompts/` are picked up on reload). ~10 sec. If still missing, fall back to walking through the `expected-artifacts/` folder. |
 | `/research` produces obviously wrong output | Open `expected-artifacts/research-vscm-package.md` and walk through it instead. Frame it as: *"the live one was a bit off; here's what a polished one looks like."* |
 | `/implement` runs forever | Click **Stop** in the chat panel to cancel the current run. *"This is exactly the failure mode on slide 5, the model gets stuck. Here's what we'd do."* Switch to the pre-built `expected-artifacts/implement-*.md`. |
 | The whole thing fails (gateway down, etc.) | Skip the demo entirely. Spend extra time on slides 5-7 (failure modes are the bigger conceptual content anyway). |
@@ -175,7 +175,7 @@ The expected-artifacts folder is your safety net. **Don't try to debug live.** A
 
 | Question | Short answer |
 |---|---|
-| "Where do these slash commands come from?" | "They're four markdown files in `.github/prompts/` — `research.prompt.md`, `plan.prompt.md`, etc. Each is frontmatter (tools) plus a templated system prompt. The phase design is adapted from UW SSEC's `rse-plugins`; we ship them as Copilot prompt files so the whole workshop stays in one tool." |
+| "Where do these slash commands come from?" | "Each is a small markdown prompt file in `.github/prompts/` (`research.prompt.md`, `plan.prompt.md`, …) that hands off to a reusable **skill** from UW SSEC's `rse-plugins` (`ai-research-workflows`). The devcontainer installs the skills into Copilot; we keep everything in Copilot Chat so the whole workshop stays in one tool." |
 | "Could I run the same workflow in Claude Code or Cursor?" | "Yes — the *pattern* (named slash commands, markdown artifacts in `docs/rse/specs/`) is portable; the file format differs per tool. We keep everything in Copilot Chat here for consistency, but you can port these to any agent." |
 | "Should I write workflows for my own projects?" | "Yes, but start small. One slash command for the workflow you do most often (e.g., `/run-tests-and-summarize` or `/explain-this-traceback`) is a good first project. That's Block 4." |
 | "How do I carry context across a long session?" | "Run `/handoff` — it writes a self-contained markdown doc to `docs/rse/specs/`, then you start a fresh chat and point it at that file. It ships in `.github/prompts/` like the others." |

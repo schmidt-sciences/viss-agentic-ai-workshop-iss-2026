@@ -45,8 +45,10 @@ Seven Copilot Chat slash commands, all shipped in-repo as `.github/prompts/*.pro
 | 6. Validate | `/validate` | inline report | Verify built vs planned |
 | (any time) | `/handoff` | `docs/rse/specs/handoff-<ts>.md` | Transfer session context |
 
-Each is just a **prompt file**: frontmatter (tools) plus a templated system
-prompt that writes an auditable artifact to `docs/rse/specs/`. No plugin to install.
+Each command is a small **prompt file** (frontmatter + tools) that hands off to a
+reusable **skill** — UW SSEC's `ai-research-workflows` — which runs the phase and
+writes an auditable artifact to `docs/rse/specs/`. The skills are installed into
+Copilot for you by the devcontainer; nothing to install by hand.
 
 **You don't use all seven every time.** We'll demo four. Pick the pattern:
 
@@ -193,13 +195,13 @@ The full `/research` -> `/plan` -> `/implement` -> `/validate` loop is the **dur
 
 You just watched four Copilot prompt files do this:
 
-- **System prompt** for each slash command (templated text in a `.prompt.md`)
+- **Prompt file** per command (frontmatter + tools) that hands off to a **skill** — the templated phase instructions live in the skill
 - **Tool list** per command (`read`, `edit/editFiles`, `execute/runInTerminal`, ... same idea as Block 1's tool schemas)
 - **Project memory** via `AGENTS.md` (same mechanic as Block 1)
 - **Output convention**: write a markdown artifact to `docs/rse/specs/`
 
-That's all a workflow command is. A markdown file, no magic.
+That's all a workflow command is: a prompt file plus a skill, both just markdown — no magic.
 
-> **Block 4: build your own.** We'll write one prompt file (or custom
-> agent) from scratch, pick the phase that's most useful to you, or invent
+> **Block 4: build your own.** We'll write one from scratch — a prompt file,
+> skill, or custom agent — pick the phase that's most useful to you, or invent
 > your own, and run it against the climate model (or your own code).
