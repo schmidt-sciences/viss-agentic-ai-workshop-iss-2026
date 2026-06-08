@@ -15,6 +15,10 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 PLUGIN_DIR="${REPO_ROOT}/rse-plugins/plugins/ai-research-workflows"
 
+# Pin the `skills` CLI to a known-good version so container creation is
+# reproducible and isn't broken by an upstream release. Bump deliberately.
+SKILLS_VERSION="1.5.9"
+
 # --- Output styling -------------------------------------------------------
 # Colors are emitted unconditionally (not gated on a tty) because the
 # devcontainer / Codespaces "creating container" log renders ANSI codes.
@@ -50,15 +54,15 @@ if [ ! -f "${PLUGIN_DIR}/.claude-plugin/plugin.json" ]; then
 fi
 log "Found plugin: ${PLUGIN_DIR}"
 
-say 2 "Installing ai-research-workflows skills into GitHub Copilot (global)"
-# `npx -y` auto-confirms the one-time fetch of the `skills` CLI so this stays
-# non-interactive during the container lifecycle. `-g` installs globally for the
-# user; `-a github-copilot` targets the GitHub Copilot CLI agent.
-if npx -y skills add "${PLUGIN_DIR}" -g -a github-copilot; then
+say 2 "Installing ai-research-workflows skills into GitHub Copilot (global, skills@${SKILLS_VERSION})"
+# `npx -y` auto-confirms the one-time fetch of the pinned `skills` CLI so this
+# stays non-interactive during the container lifecycle. `-g` installs globally
+# for the user; `-a github-copilot` targets the GitHub Copilot CLI agent.
+if npx -y "skills@${SKILLS_VERSION}" add "${PLUGIN_DIR}" -g -a github-copilot; then
   log "Installed ai-research-workflows skills for github-copilot."
 else
   warn "Failed to install ai-research-workflows skills (continuing)."
-  warn "Retry manually with: npx skills add ${PLUGIN_DIR} -g -a github-copilot"
+  warn "Retry manually with: npx skills@${SKILLS_VERSION} add ${PLUGIN_DIR} -g -a github-copilot"
   exit 0
 fi
 
