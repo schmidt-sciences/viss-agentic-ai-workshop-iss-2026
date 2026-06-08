@@ -40,7 +40,7 @@ blocks/0N-name/
 - **Copilot Chat in VSCode / Codespaces**: the deep-dive tool through Blocks 1, 2, and 4. The Codespace ships a custom **OAI-compatible Copilot** extension ([`uw-ssec/oai-compatible-copilot`](https://github.com/uw-ssec/oai-compatible-copilot)) that points Copilot Chat at the workshop's gateway, so you don't need your own Copilot subscription — you pick the workshop's models (Claude Sonnet 4.6, Claude Haiku 4.5) right in the model picker.
   - *Why a custom extension?* Stock Copilot Chat does support bring-your-own-key, but its in-editor flow needs a per-participant GitHub sign-in with a Copilot entitlement, manual per-user key entry, and a fixed list of named providers with no "point at an arbitrary OpenAI-compatible base URL" option. The custom extension reads the gateway URL + key from the Codespace secrets and pre-registers the models, so Chat works on launch for everyone with zero setup and no Copilot license. (The pre-installed **Copilot CLI** instead uses stock BYOK directly via the `COPILOT_PROVIDER_*` env vars, since the CLI *does* accept a custom base URL.)
   - Block 4's capstone uses **custom agents** (`.github/agents/*.agent.md`, the renamed "chat modes"); the workshop ships a whole gallery of customizations in [`.github/`](.github/) — agents, prompt-file commands, a skill, and path-scoped instructions — indexed in the [customization gallery below](#copilot-customization-gallery) for participants to read and remix.
-- **Copilot Chat prompt-file commands** for Block 3's research loop: `/research`, `/plan`, `/iterate-plan`, `/experiment`, `/implement`, `/validate`, `/handoff` ship **in-repo** as [`.github/prompts/*.prompt.md`](.github/prompts/) and run in the same Copilot Chat panel (agent mode) — no marketplace plugin to install. The phase design and artifact templates are adapted from UW SSEC's [`rse-plugins`](https://github.com/uw-ssec/rse-plugins) research-plan-implement workflow. The GitHub Copilot CLI also comes pre-installed (BYOK against the same gateway).
+- **Copilot Chat prompt-file commands** for Block 3's research loop: `/research`, `/plan`, `/iterate-plan`, `/experiment`, `/implement`, `/validate`, `/handoff` ship **in-repo** as [`.github/prompts/*.prompt.md`](.github/prompts/) and run in the same Copilot Chat panel (agent mode). Each is a thin wrapper that delegates to the matching **`ai-research-workflows` skill** from UW SSEC's [`rse-plugins`](https://github.com/uw-ssec/rse-plugins); the devcontainer installs those skills into Copilot for you, so there's nothing to install by hand. The GitHub Copilot CLI also comes pre-installed (BYOK against the same gateway).
 - **Claude (via the workshop's LiteLLM/LLMoxie gateway)**: the model backend, fronting Claude Sonnet 4.6 and Claude Haiku 4.5. Copilot Chat, the Copilot CLI, and the notebooks all hit the same gateway. The notebooks use the **`litellm` Python SDK** so the same agent loop also works against any other model the gateway fronts (GPT, Gemini, ...), change one constant.
 - **Python 3.12 + `uv`**: environment and package management.
 - **Marp**: slides as markdown.
@@ -97,6 +97,13 @@ research project. Narrow agents work; "be my coding assistant" disappoints.
 The two **worked examples** referenced throughout Block 4 are
 `scientific-python-reviewer` (read-only) and `docstring-writer` (write-mode).
 The rest of the gallery extends the same pattern across the lifecycle.
+
+> **Reading the command examples:** the Block 3 research-loop commands
+> (`research`, `plan`, …) are thin wrappers that delegate to the installed
+> [`ai-research-workflows`](https://github.com/uw-ssec/rse-plugins) skills, so
+> opening one shows a one-line skill hand-off, not the full workflow. To study a
+> self-contained prompt-file command, read `scaffold-package`, `eda-summary`,
+> `write-tests`, or `citation-and-release` instead.
 
 ### How to try them in this Codespace
 
