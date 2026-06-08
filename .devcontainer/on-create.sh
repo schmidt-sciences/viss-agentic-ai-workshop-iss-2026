@@ -11,7 +11,7 @@ BOLD="\033[1m"
 RESET="\033[0m"
 
 STAGE="on-create"
-TOTAL_STEPS=5
+TOTAL_STEPS=6
 
 say()  { printf "%b\n==> [%s] (%s/%s) %s%b\n" "${BOLD}${GREEN}" "${STAGE}" "$1" "${TOTAL_STEPS}" "$2" "${RESET}"; }
 info() { printf "      %s\n" "$1"; }
@@ -89,6 +89,23 @@ if ! grep -qF "${HOOK_MARKER}" "${BASHRC}" 2>/dev/null; then
   info "Added .venv activation hook to ~/.bashrc"
 else
   info "~/.bashrc already has the .venv activation hook"
+fi
+
+say 6 "Linking the research-loop demo to the repo's .github"
+# The Block 3 research-loop demo is worked in as its own folder, so it needs a
+# .github (prompts, instructions, skills) of its own. Symlink it to the repo-root
+# .github instead of duplicating, so the demo always tracks the canonical
+# prompts. Created here (not committed) because git symlinks don't survive
+# checkout on every platform (e.g. Windows without core.symlinks).
+DEMO_GITHUB="blocks/03-research-loop/demo/.github"
+if [ -e "${DEMO_GITHUB}" ] && [ ! -L "${DEMO_GITHUB}" ]; then
+  warn "Skipping symlink: ${DEMO_GITHUB} exists and is not a symlink"
+elif [ ! -d "blocks/03-research-loop/demo" ]; then
+  warn "Skipping symlink: blocks/03-research-loop/demo not found"
+else
+  # Relative target so the link resolves regardless of where the repo is mounted.
+  ln -sfn ../../../.github "${DEMO_GITHUB}"
+  info "Linked ${DEMO_GITHUB} -> ../../../.github"
 fi
 
 printf "%b\n==> [%s] complete — workspace is ready.%b\n" "${BOLD}${GREEN}" "${STAGE}" "${RESET}"

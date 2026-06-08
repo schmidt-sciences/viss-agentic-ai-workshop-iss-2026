@@ -42,3 +42,8 @@ slides.pptx
 # (/research, /plan, /implement, /validate). Demo run output, not source.
 # The curated fallback copies live in blocks/*/demo/expected-artifacts/.
 .agents/
+
+# Symlink created at container-create time by .devcontainer/on-create.sh so the
+# Block 3 demo folder shares the repo-root .github (prompts/instructions/skills).
+# Not committed because git symlinks don't survive checkout on every platform.
+/blocks/03-research-loop/demo/.github
