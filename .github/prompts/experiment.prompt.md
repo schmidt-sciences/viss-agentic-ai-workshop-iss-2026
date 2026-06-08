@@ -4,7 +4,7 @@ description: 'Compare 2-3 approaches with real prototype code and write an evide
 tools: ['read', 'edit/editFiles', 'search/codebase', 'search', 'execute/runInTerminal']
 ---
 
-Use the `ai-research-workflows:running-experiments` skill to handle this request.
+Use the `running-experiments` skill to handle this request.
 
 What to compare: ${input:question:the decision to resolve, e.g. "argparse vs click for the vscm CLI"}
 

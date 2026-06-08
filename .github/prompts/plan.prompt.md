@@ -4,7 +4,7 @@ description: 'Turn research into a phased, testable implementation plan written 
 tools: ['read', 'search/codebase', 'search', 'search/usages', 'edit/editFiles']
 ---
 
-Use the `ai-research-workflows:planning-implementations` skill to handle this request.
+Use the `planning-implementations` skill to handle this request.
 
 What to plan (goal, file references, or instructions): ${input:goal:what to build, e.g. "package the climate model as an installable vscm package following AGENTS.md"}
 

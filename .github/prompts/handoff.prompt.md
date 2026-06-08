@@ -4,7 +4,7 @@ description: 'Write a self-contained handoff doc to .agents/ so a fresh chat can
 tools: ['read', 'search/codebase', 'search', 'execute/runInTerminal', 'edit/editFiles']
 ---
 
-Use the `ai-research-workflows:creating-handoffs` skill to handle this request.
+Use the `creating-handoffs` skill to handle this request.
 
 Optional focus note: ${input:note:anything to emphasize in the handoff (blank = summarize the whole session)}
 

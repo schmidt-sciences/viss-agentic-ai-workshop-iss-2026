@@ -4,7 +4,7 @@ description: 'Systematically verify an implementation against its plan and repor
 tools: ['read', 'search/codebase', 'search', 'execute/runInTerminal', 'edit/editFiles']
 ---
 
-Use the `ai-research-workflows:validating-implementations` skill to handle this request.
+Use the `validating-implementations` skill to handle this request.
 
 Plan to validate against: ${input:plan:path to the plan, e.g. .agents/plan-vscm-package.md}
 

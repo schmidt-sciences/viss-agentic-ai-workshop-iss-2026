@@ -4,7 +4,7 @@ description: 'Execute an approved plan phase by phase, verifying as you go, then
 tools: ['read', 'edit/editFiles', 'search/codebase', 'search', 'execute/runInTerminal']
 ---
 
-Use the `ai-research-workflows:implementing-plans` skill to handle this request.
+Use the `implementing-plans` skill to handle this request.
 
 Plan to implement: ${input:plan:path to the plan, e.g. .agents/plan-vscm-package.md}
 
