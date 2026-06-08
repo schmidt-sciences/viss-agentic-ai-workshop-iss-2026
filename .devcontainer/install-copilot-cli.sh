@@ -16,10 +16,13 @@ say()   { printf "%b\n==> [%s] (%s/%s) %s%b\n" "${BOLD}${GREEN}" "${STAGE}" "$1"
 log()   { printf "      [%s] %s\n" "${STAGE}" "$*"; }
 error() { printf "%b      [%s] ERROR: %s%b\n" "${RED}" "${STAGE}" "$*" "${RESET}" >&2; }
 
-# We deliberately install NO agent plugins here. The workshop's research-loop
-# workflow (/research, /plan, /iterate-plan, /experiment, /implement, /validate,
-# /handoff) ships in-repo as Copilot prompt files under .github/prompts/, so it
-# works in Copilot Chat with no marketplace plugin to install or keep in sync.
+# We install NO agent plugins here, at image-build time, because the rse-plugins
+# submodule that provides them lives in the mounted workspace, not in the image.
+# The ai-research-workflows skills are installed at container-create time by
+# install-skills.sh instead. The workshop's research-loop workflow (/research,
+# /plan, /iterate-plan, /experiment, /implement, /validate, /handoff) also ships
+# in-repo as Copilot prompt files under .github/prompts/, so it works in Copilot
+# Chat even without the plugin.
 
 say 1 "Installing GitHub Copilot CLI"
 if ! command -v copilot >/dev/null 2>&1; then

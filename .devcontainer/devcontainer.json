@@ -74,7 +74,7 @@
     "COPILOT_PROVIDER_API_KEY": "${localEnv:LITELLM_API_KEY}",
     "COPILOT_MODEL": "claude-sonnet-4-6"
   },
-  "onCreateCommand": "bash .devcontainer/on-create.sh",
+  "onCreateCommand": "bash .devcontainer/on-create.sh && bash .devcontainer/install-skills.sh",
   "postCreateCommand": "bash .devcontainer/post-create.sh",
   "postStartCommand": "bash .devcontainer/post-start.sh",
   "postAttachCommand": "bash .devcontainer/install-vsix.sh",
