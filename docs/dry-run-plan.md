@@ -193,12 +193,12 @@ This is the block where you really need a working environment.
 
 - [ ] Open Copilot Chat in **Agent** mode with a workshop model selected.
 - [ ] Type `/` and confirm `research`, `plan`, `implement`, `validate` appear (the prompt files in `.github/prompts/`). If not, **Developer: Reload Window**.
-- [ ] Open the workspace at `blocks/03-research-loop/demo/`, then `rm -rf .agents/` in the terminal to clear any leftover artifacts.
+- [ ] Open the workspace at `blocks/03-research-loop/demo/`, then `rm -rf docs/rse/specs/` in the terminal to clear any leftover artifacts.
 - [ ] Run the four prompts from [`instructor-notes.md`](../blocks/03-research-loop/instructor-notes.md), in order:
-    - [ ] `/research ...` - produces `.agents/research-*.md` in <4 min, with file:line references.
-    - [ ] `/plan ...` - produces `.agents/plan-*.md` in <4 min, with phases + verification steps + no open questions.
-    - [ ] `/implement .agents/plan-*.md` - produces `.agents/implement-*.md`, ticking off phases. <8 min.
-    - [ ] `/validate .agents/plan-*.md` - produces a pass/fail report.
+    - [ ] `/research ...` - produces `docs/rse/specs/research-*.md` in <4 min, with file:line references.
+    - [ ] `/plan ...` - produces `docs/rse/specs/plan-*.md` in <4 min, with phases + verification steps + no open questions.
+    - [ ] `/implement docs/rse/specs/plan-*.md` - produces `docs/rse/specs/implement-*.md`, ticking off phases. <8 min.
+    - [ ] `/validate docs/rse/specs/plan-*.md` - produces a pass/fail report.
 - [ ] Compare the **real** outputs against [`expected-artifacts/`](../blocks/03-research-loop/demo/expected-artifacts/). If the real ones are wildly better, **replace the hand-crafted samples with the real outputs** so the fallback is authentic.
 - [ ] Verify [`demo/starter/climate_model.py`](../blocks/03-research-loop/demo/starter/climate_model.py) still runs after a `git checkout` (in case the demo modified it):
     ```bash
@@ -211,7 +211,7 @@ This is the block where you really need a working environment.
 #### Block 3 risk check
 
 - [ ] **The four workflow prompt files** in [`.github/prompts/`](../.github/prompts/) (`research`, `plan`, `implement`, `validate`) - do they appear in the `/` picker on a fresh Codespace, and does each `mode`/`tools` frontmatter validate?
-- [ ] **Artifact output path** - do the prompts write to `.agents/` relative to the workspace folder? Confirm the demo opens the workspace at `blocks/03-research-loop/demo/` so `AGENTS.md` is at the root.
+- [ ] **Artifact output path** - do the prompts write to `docs/rse/specs/` relative to the workspace folder? Confirm the demo opens the workspace at `blocks/03-research-loop/demo/` so `AGENTS.md` is at the root.
 - [ ] **`implement`/`validate` tool access** - confirm Copilot agent mode is allowed to run `uv run pytest` (`execute/runInTerminal`) and edit files (`edit/editFiles`) without per-call approval stalling the live demo.
 - [ ] **The 4-phase demo timing** - `/implement` is the variable one; if it consistently runs >6 min, prepare to skip `/validate` live.
 - [ ] **Failure mode taxonomy** (slide 5): all 6 rows accurate? Any newly common failure modes worth adding (e.g., "model drops Unicode" if that's still a thing)?

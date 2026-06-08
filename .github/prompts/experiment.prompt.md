@@ -1,6 +1,6 @@
 ---
 agent: agent
-description: 'Compare 2-3 approaches with real prototype code and write an evidence-based recommendation to .agents/.'
+description: 'Compare 2-3 approaches with real prototype code and write an evidence-based recommendation to docs/rse/specs/.'
 tools: ['read', 'edit/editFiles', 'search/codebase', 'search', 'execute/runInTerminal']
 ---
 

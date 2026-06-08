@@ -8,7 +8,7 @@ public-facing version; this is the inside view.
 - [ ] Open VS Code in the Codespace with the **workspace folder set to `blocks/03-research-loop/demo/`** (File → Open Folder, or open the Codespace there). The cwd matters: opening `demo/` (not `demo/starter/`) puts `AGENTS.md` at the workspace root, with the starter scripts in the `starter/` subfolder and the fallback `expected-artifacts/` right next to them.
 - [ ] Open **Copilot Chat** and switch the picker to **Agent** mode (the dropdown at the top of the chat panel). Confirm a workshop model is selected (Claude Sonnet 4.6 / Haiku 4.5).
 - [ ] Confirm the workflow commands appear: type `/` in chat and look for `research`, `plan`, `iterate-plan`, `experiment`, `implement`, `validate`, `handoff` (the demo uses four). They ship in [`.github/prompts/`](../../.github/prompts/). If they're missing, run **Developer: Reload Window**.
-- [ ] In the integrated terminal: `cd blocks/03-research-loop/demo && rm -rf .agents/`. We want a clean slate so artifacts appear *during* the demo. **Don't run any command yet** — the demo starts with you running `/research` live in front of the room (slide 4).
+- [ ] In the integrated terminal: `cd blocks/03-research-loop/demo && rm -rf docs/rse/specs/`. We want a clean slate so artifacts appear *during* the demo. **Don't run any command yet** — the demo starts with you running `/research` live in front of the room (slide 4).
 - [ ] Have **all four prompts copied to a scratch buffer** (text file, sticky note, Slack DM to yourself, wherever you can paste fast). The exact prompts are below.
 - [ ] Open `blocks/03-research-loop/demo/expected-artifacts/` in a side tab as the **fallback** in case the live demo fails.
 
@@ -51,8 +51,8 @@ If `/implement` is faster than expected, jump to slide 6 (mitigations) early. If
 
 ### 4. Demo intro
 
-- In Copilot Chat (Agent mode), briefly show that there is no `.agents/` directory yet, and that `AGENTS.md` and the `starter/` scripts are right there in the workspace. Type `/` to show the workflow commands in the picker (we'll use four of them).
-- *"We're going to package this. Watch the artifacts appear in `.agents/` as we go."*
+- In Copilot Chat (Agent mode), briefly show that there is no `docs/rse/specs/` directory yet, and that `AGENTS.md` and the `starter/` scripts are right there in the workspace. Type `/` to show the workflow commands in the picker (we'll use four of them).
+- *"We're going to package this. Watch the artifacts appear in `docs/rse/specs/` as we go."*
 
 ### 5. Failure mode taxonomy
 
@@ -67,7 +67,7 @@ If `/implement` is faster than expected, jump to slide 6 (mitigations) early. If
 
 ### 6a. Reviewing the agent's work (git hygiene)
 
-- 45-60 seconds. This is the practical complement to mitigations: the `.agents/` artifacts are the *plan* audit trail, git is the *code* audit trail.
+- 45-60 seconds. This is the practical complement to mitigations: the `docs/rse/specs/` artifacts are the *plan* audit trail, git is the *code* audit trail.
 - The quotable line: **"Read the diff, not the chat. The 'Done!' is a claim; the diff is the evidence."** Ties straight back to the "confident wrong answer" failure mode on slide 5.
 - Concrete demo callback: *"Notice we `git restore`d between runs all morning, that's the same one-command undo you'd use after a bad phase."*
 - For scientists new to git: keep it to the four bullets, don't teach git here, just establish "commit before, review the diff, commit per phase." Point them at the Software/Code Carpentry links in `resources.md`.
@@ -118,7 +118,7 @@ Copy these to your scratch buffer before starting. **Run them one at a time, in 
 **What to narrate while it runs:**
 - *"`/research` reads everything completely, not just snippets. It's a documentarian, not an evaluator."*
 - *"Notice it's already discovered the `AGENTS.md` file and is reading it for context."*
-- When the artifact appears: open `.agents/research-*.md` in a split view. Scroll through. Point at the `file:line` references.
+- When the artifact appears: open `docs/rse/specs/research-*.md` in a split view. Scroll through. Point at the `file:line` references.
 
 ### Prompt 2: `/plan` (target: 4 min)
 
@@ -129,12 +129,12 @@ Copy these to your scratch buffer before starting. **Run them one at a time, in 
 **What to narrate:**
 - *"`/plan` reads the research document automatically, that's why we did `/research` first."*
 - *"It asks clarifying questions. Watch."* (Sometimes it does, sometimes the AGENTS.md was specific enough that it doesn't.)
-- When the artifact appears: open `.agents/plan-*.md`. Point at the **automated** vs **manual** verification sections. *"This is what makes `/validate` possible, we know what to check."*
+- When the artifact appears: open `docs/rse/specs/plan-*.md`. Point at the **automated** vs **manual** verification sections. *"This is what makes `/validate` possible, we know what to check."*
 
 ### Prompt 3: `/implement` (target: 6 min: narrate failure modes during)
 
 ```
-/implement .agents/plan-vscm-package.md
+/implement docs/rse/specs/plan-vscm-package.md
 ```
 
 **What to narrate** (fill the agent's processing time with slides 5 and 6, failure modes + mitigations):
@@ -145,14 +145,14 @@ Copy these to your scratch buffer before starting. **Run them one at a time, in 
 
 **Optional 30-second aside** (drop it once, while `/implement` is grinding, to preempt the "isn't this overkill?" question):
 
-> *"What you're watching now is the slow, durable loop - we're going to ship this code. For day-to-day research iteration you'd just chat against `AGENTS.md`, or run `/research` alone. The point of the full loop is the audit trail in `.agents/`, not throughput. We come back to that on slide 8."*
+> *"What you're watching now is the slow, durable loop - we're going to ship this code. For day-to-day research iteration you'd just chat against `AGENTS.md`, or run `/research` alone. The point of the full loop is the audit trail in `docs/rse/specs/`, not throughput. We come back to that on slide 8."*
 
 **If `/implement` blows up live:** narrate the failure mode in real time. *"Look, it just hit context exhaustion / it's looping / it's hallucinating an API. This is the taxonomy on slide 5, in action."* Then pivot to the `expected-artifacts/` folder for the rest of the demo.
 
 ### Prompt 4: `/validate` (target: 2 min)
 
 ```
-/validate .agents/plan-vscm-package.md
+/validate docs/rse/specs/plan-vscm-package.md
 ```
 
 **What to narrate:**
@@ -176,9 +176,9 @@ The expected-artifacts folder is your safety net. **Don't try to debug live.** A
 | Question | Short answer |
 |---|---|
 | "Where do these slash commands come from?" | "They're four markdown files in `.github/prompts/` — `research.prompt.md`, `plan.prompt.md`, etc. Each is frontmatter (tools) plus a templated system prompt. The phase design is adapted from UW SSEC's `rse-plugins`; we ship them as Copilot prompt files so the whole workshop stays in one tool." |
-| "Could I run the same workflow in Claude Code or Cursor?" | "Yes — the *pattern* (named slash commands, markdown artifacts in `.agents/`) is portable; the file format differs per tool. We keep everything in Copilot Chat here for consistency, but you can port these to any agent." |
+| "Could I run the same workflow in Claude Code or Cursor?" | "Yes — the *pattern* (named slash commands, markdown artifacts in `docs/rse/specs/`) is portable; the file format differs per tool. We keep everything in Copilot Chat here for consistency, but you can port these to any agent." |
 | "Should I write workflows for my own projects?" | "Yes, but start small. One slash command for the workflow you do most often (e.g., `/run-tests-and-summarize` or `/explain-this-traceback`) is a good first project. That's Block 4." |
-| "How do I carry context across a long session?" | "Run `/handoff` — it writes a self-contained markdown doc to `.agents/`, then you start a fresh chat and point it at that file. It ships in `.github/prompts/` like the others." |
+| "How do I carry context across a long session?" | "Run `/handoff` — it writes a self-contained markdown doc to `docs/rse/specs/`, then you start a fresh chat and point it at that file. It ships in `.github/prompts/` like the others." |
 | "Can the agent's plan be wrong?" | "Often. Run `/iterate-plan` for surgical edits (or hand-edit the plan — it's plain markdown) instead of regenerating. And `/validate` is non-optional for anything you'd commit." |
 
 ## What to skip if you're behind time

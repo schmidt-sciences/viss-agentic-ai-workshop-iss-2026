@@ -6,6 +6,6 @@ tools: ['read', 'search/codebase', 'search', 'execute/runInTerminal', 'edit/edit
 
 Use the `validating-implementations` skill to handle this request.
 
-Plan to validate against: ${input:plan:path to the plan, e.g. .agents/plan-vscm-package.md}
+Plan to validate against: ${input:plan:path to the plan, e.g. docs/rse/specs/plan-vscm-package.md}
 
 If nothing was provided, enter the skill's Collaborative mode and ask what is needed before proceeding.

@@ -31,7 +31,7 @@ By the end of this block, an attendee can:
       climate_model.py
       co2_emissions.py
       SSP_CO2emissions.csv
-    expected-artifacts/  # pre-generated .agents/ outputs as live-demo fallback
+    expected-artifacts/  # pre-generated docs/rse/specs/ outputs as live-demo fallback
 ```
 
 ## Timing (30 min)
@@ -63,7 +63,7 @@ This is a **live, instructor-led demo**. Participants don't need to type anythin
 
 1. Open VS Code with the workspace folder set to `blocks/03-research-loop/demo/`.
 2. Open **Copilot Chat** and switch the picker to **Agent** mode.
-3. Wipe any leftover `.agents/` from prior runs: `rm -rf .agents/`.
+3. Wipe any leftover `docs/rse/specs/` from prior runs: `rm -rf docs/rse/specs/`.
 4. Run the four prompt-file commands from [`instructor-notes.md`](instructor-notes.md), `/research`, `/plan`, `/implement`, `/validate`, one at a time. They are defined in [`.github/prompts/`](../../.github/prompts/) and appear when you type `/` in chat.
 
 If anything goes wrong on the day, the [`expected-artifacts/`](demo/expected-artifacts/) folder ships pre-generated outputs to walk through instead.

@@ -37,16 +37,16 @@ Seven Copilot Chat slash commands, all shipped in-repo as `.github/prompts/*.pro
 
 | Phase | Slash command | Output | Purpose |
 |---|---|---|---|
-| 1. Research | `/research` | `.agents/research-<slug>.md` | Understand existing code |
-| 2. Plan | `/plan` | `.agents/plan-<slug>.md` | Specify what we'll build |
+| 1. Research | `/research` | `docs/rse/specs/research-<slug>.md` | Understand existing code |
+| 2. Plan | `/plan` | `docs/rse/specs/plan-<slug>.md` | Specify what we'll build |
 | 3. Iterate | `/iterate-plan` | updates plan in place | Refine without rewriting |
-| 4. Experiment | `/experiment` | `.agents/experiment-<slug>.md` | Compare approaches |
-| 5. Implement | `/implement` | `.agents/implement-<slug>.md` | Execute phase by phase |
+| 4. Experiment | `/experiment` | `docs/rse/specs/experiment-<slug>.md` | Compare approaches |
+| 5. Implement | `/implement` | `docs/rse/specs/implement-<slug>.md` | Execute phase by phase |
 | 6. Validate | `/validate` | inline report | Verify built vs planned |
-| (any time) | `/handoff` | `.agents/handoff-<ts>.md` | Transfer session context |
+| (any time) | `/handoff` | `docs/rse/specs/handoff-<ts>.md` | Transfer session context |
 
 Each is just a **prompt file**: frontmatter (tools) plus a templated system
-prompt that writes an auditable artifact to `.agents/`. No plugin to install.
+prompt that writes an auditable artifact to `docs/rse/specs/`. No plugin to install.
 
 **You don't use all seven every time.** We'll demo four. Pick the pattern:
 
@@ -63,7 +63,7 @@ The codebase: `climate_model.py` + `co2_emissions.py` (~90 lines, no package, no
 
 The goal: turn it into an installable `vscm` Python package, following Scientific Python guidelines.
 
-We'll run **four phases** in order: `/research`, `/plan`, `/implement`, `/validate`. Watch the artifacts appear in `.agents/` as we go.
+We'll run **four phases** in order: `/research`, `/plan`, `/implement`, `/validate`. Watch the artifacts appear in `docs/rse/specs/` as we go.
 
 > While `/implement` runs (it's the slow one), we'll use the time to talk
 > through **failure modes**, what to watch for, where they come from,
@@ -91,7 +91,7 @@ Each failure traces back to a specific post-training shortcut from Block 2.
 
 **Process levers** (what the prompt-file workflow gives you):
 
-- Auditable artifacts in `.agents/`, you can read what the model planned vs what it built
+- Auditable artifacts in `docs/rse/specs/`, you can read what the model planned vs what it built
 - `/validate` as a quality gate, not a vibe check
 - `/handoff` to compact context across long sessions
 
@@ -110,7 +110,7 @@ Each failure traces back to a specific post-training shortcut from Block 2.
 
 ## Reviewing the agent's work: git is your safety net
 
-The `.agents/` artifacts are the **plan** trail. **git** is the **code** trail.
+The `docs/rse/specs/` artifacts are the **plan** trail. **git** is the **code** trail.
 Together they're how you stay in control of an agent that edits files.
 
 - **Commit before you start.** A clean tree means `git diff` shows *exactly*
@@ -181,7 +181,7 @@ The full `/research` -> `/plan` -> `/implement` -> `/validate` loop is the **dur
 | **When** | Notebook spikes, parameter sweeps, "does this idea work?" | Library / package code, anything that outlives the question |
 | **Loop** | Chat against `AGENTS.md`; maybe `/research` | All four phases; `/validate` non-negotiable |
 | **Throwaway?** | Yes, by design | No, this is your contribution |
-| **Trust model** | You eyeball the output | The artifacts in `.agents/` are the audit trail |
+| **Trust model** | You eyeball the output | The artifacts in `docs/rse/specs/` are the audit trail |
 
 **Same agents. Same workflows. Different dial settings.** Pick the loop length to match the half-life of the code.
 
@@ -196,7 +196,7 @@ You just watched four Copilot prompt files do this:
 - **System prompt** for each slash command (templated text in a `.prompt.md`)
 - **Tool list** per command (`read`, `edit/editFiles`, `execute/runInTerminal`, ... same idea as Block 1's tool schemas)
 - **Project memory** via `AGENTS.md` (same mechanic as Block 1)
-- **Output convention**: write a markdown artifact to `.agents/`
+- **Output convention**: write a markdown artifact to `docs/rse/specs/`
 
 That's all a workflow command is. A markdown file, no magic.
 

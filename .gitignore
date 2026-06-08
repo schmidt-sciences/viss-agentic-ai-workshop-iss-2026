@@ -39,9 +39,10 @@ slides.pptx
 .aws/
 
 # Artifacts written by the Block 3 research-loop workflow commands
-# (/research, /plan, /implement, /validate). Demo run output, not source.
-# The curated fallback copies live in blocks/*/demo/expected-artifacts/.
-.agents/
+# (/research, /plan, /implement, /validate) into the demo's docs/rse/specs/.
+# Demo run output, not source — the curated fallback copies live in
+# blocks/*/demo/expected-artifacts/.
+/blocks/03-research-loop/demo/docs/rse/specs/
 
 # Symlink created at container-create time by .devcontainer/on-create.sh so the
 # Block 3 demo folder shares the repo-root .github (prompts/instructions/skills).

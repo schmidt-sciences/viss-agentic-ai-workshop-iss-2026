@@ -1,6 +1,6 @@
 ---
 agent: agent
-description: 'Document how a codebase or topic works today, and write the findings to .agents/.'
+description: 'Document how a codebase or topic works today, and write the findings to docs/rse/specs/.'
 tools: ['read', 'search/codebase', 'search', 'search/usages', 'edit/editFiles']
 ---
 

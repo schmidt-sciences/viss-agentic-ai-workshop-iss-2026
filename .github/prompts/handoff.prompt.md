@@ -1,6 +1,6 @@
 ---
 agent: agent
-description: 'Write a self-contained handoff doc to .agents/ so a fresh chat can resume the work.'
+description: 'Write a self-contained handoff doc to docs/rse/specs/ so a fresh chat can resume the work.'
 tools: ['read', 'search/codebase', 'search', 'execute/runInTerminal', 'edit/editFiles']
 ---
 
