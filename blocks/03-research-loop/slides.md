@@ -42,7 +42,7 @@ Seven Copilot Chat slash commands, all shipped in-repo as `.github/prompts/*.pro
 | 3. Iterate | `/iterate-plan` | updates plan in place | Refine without rewriting |
 | 4. Experiment | `/experiment` | `docs/rse/specs/experiment-<slug>.md` | Compare approaches |
 | 5. Implement | `/implement` | `docs/rse/specs/implement-<slug>.md` | Execute phase by phase |
-| 6. Validate | `/validate` | inline report | Verify built vs planned |
+| 6. Validate | `/validate` | `docs/rse/specs/validation-<slug>.md` (+ inline) | Verify built vs planned |
 | (any time) | `/handoff` | `docs/rse/specs/handoff-<ts>.md` | Transfer session context |
 
 Each command is a small **prompt file** (frontmatter + tools) that hands off to a
