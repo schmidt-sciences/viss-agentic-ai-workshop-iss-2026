@@ -1,7 +1,7 @@
 # Block 3: Agent-Driven Research Software Engineering
 
 **Duration:** ~30 minutes
-**Tool focus:** **GitHub Copilot Chat** (agent mode) driven by workshop **prompt-file commands** that live in [`.github/prompts/`](../../.github/prompts/): `/research`, `/plan`, `/iterate-plan`, `/experiment`, `/implement`, `/validate`, `/handoff` (the live demo uses four of them). They ship in-repo — no marketplace plugin to install. Same Copilot Chat and same LiteLLM gateway as the rest of the workshop. (The phase design and artifact templates are adapted from UW SSEC's [`rse-plugins`](https://github.com/uw-ssec/rse-plugins) research-plan-implement workflow.)
+**Tool focus:** **GitHub Copilot Chat** (agent mode) driven by workshop **prompt-file commands** that live in [`.github/prompts/`](../../.github/prompts/): `/research`, `/plan`, `/iterate-plan`, `/experiment`, `/implement`, `/validate`, `/handoff` (the live demo uses four of them). Each command is a thin prompt file that delegates to the matching **`ai-research-workflows` skill** from UW SSEC's [`rse-plugins`](https://github.com/uw-ssec/rse-plugins); the skills are installed into Copilot for you by the devcontainer (from the `rse-plugins` submodule), so there's still nothing to install by hand. Same Copilot Chat and same LiteLLM gateway as the rest of the workshop.
 **Spine:** *Workflows ARE the prompt.* Structured slash commands (`/research`, `/plan`, `/implement`, `/validate`) are templated, named, reusable prompts that produce auditable artifacts.
 
 ## Learning goals
@@ -9,7 +9,7 @@
 By the end of this block, an attendee can:
 
 1. Articulate the **research-plan-implement-validate** discipline and explain why "research before plan, plan before code, validate before ship" beats unstructured prompting on real research codebases.
-2. Recognize the **phases** of the workshop workflow (`/research`, `/plan`, `/iterate-plan`, `/experiment`, `/implement`, `/validate`, `/handoff`), see that each is just a `.github/prompts/*.prompt.md` file, and pick the right subset for a given task.
+2. Recognize the **phases** of the workshop workflow (`/research`, `/plan`, `/iterate-plan`, `/experiment`, `/implement`, `/validate`, `/handoff`), see that each is a small `.github/prompts/*.prompt.md` file that delegates to a reusable skill, and pick the right subset for a given task.
 3. Name the common **agent failure modes** (context exhaustion, looping, niche-language hallucination, confidently-wrong answers, tool misuse, scope creep) and trace each one back to a specific post-training shortcut from Block 2.
 4. Apply the corresponding **mitigations** (tighter scope per turn, auditable artifacts, fresh chats to compact context, `/validate` as a quality gate, AGENTS.md as durable project memory, manual intervention).
 4. Stay in control of an agent that edits files: **review the diff (not the chat), commit per phase, and roll back cleanly with git**, and recognize **prompt injection** (the agent acting on instructions hidden in untrusted code/data/web) and the tool-scoping that mitigates it.
@@ -33,6 +33,8 @@ By the end of this block, an attendee can:
       SSP_CO2emissions.csv
     expected-artifacts/  # pre-generated docs/rse/specs/ outputs as live-demo fallback
 ```
+
+When you open the workspace at `demo/`, the devcontainer also links `demo/.github` to the repo-root [`.github/`](../../.github/) — a gitignored symlink created by `on-create.sh` — so the `/` commands, Copilot instructions, and skills resolve from inside the demo folder.
 
 ## Timing (30 min)
 
@@ -72,7 +74,7 @@ If anything goes wrong on the day, the [`expected-artifacts/`](demo/expected-art
 
 - Codespace running (see top-level [`README.md`](../../README.md) and [`docs/setup.md`](../../docs/setup.md)).
 - `LITELLM_API_KEY` and `LITELLM_BASE_URL` Codespace secrets set (Copilot Chat reads them via the OAI-compatible extension).
-- The workflow prompt files present in [`.github/prompts/`](../../.github/prompts/) (`research`, `plan`, `iterate-plan`, `experiment`, `implement`, `validate`, `handoff`) — they ship with the repo, so they appear in the `/` picker after a window reload. If they don't show, run **Developer: Reload Window**.
+- The workflow prompt files in [`.github/prompts/`](../../.github/prompts/) (`research`, `plan`, `iterate-plan`, `experiment`, `implement`, `validate`, `handoff`) and the `ai-research-workflows` skills they delegate to — both are set up by the devcontainer (the skills are installed into Copilot; the demo folder gets a `.github` symlink to the repo root). They appear in the `/` picker after a window reload; if they don't show, run **Developer: Reload Window**.
 - Copilot Chat in **Agent** mode with one of the workshop models selected (Claude Sonnet 4.6 / Haiku 4.5).
 
 ## Bridge to Block 4
